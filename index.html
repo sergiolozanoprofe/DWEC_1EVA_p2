@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El código secreto | Práctica JavaScript</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <header class="hero">
+    <div class="container hero-content">
+      <p class="eyebrow">2.º DAW · Desarrollo web en entorno cliente · 1EVA</p>
+      <h1>El código <span>secreto</span></h1>
+      <p class="hero-description">Tres preguntas de JavaScript. Tres cajas de seguridad. ¿Serás capaz de descubrir la combinación?
+      </p>
+      <div class="hero-meta">
+        <span>3 preguntas independientes</span>
+        <span>150 minutos</span>
+        <span>Consola + DOM</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro panel">
+      <div>
+        <p class="eyebrow">Antes de empezar</p>
+        <h2 id="preparacion">Tu objetivo</h2>
+        <p>En las dos primeras preguntas mostrarás los resultados en la consola del
+          navegador. En la tercera programarás la caja interactiva de esta página.</p>
+        <p>Crea <code>pregunta1.js</code>, <code>pregunta2.js</code> y <code>pregunta3.js</code> en la misma carpeta que
+          este
+          HTML y enlázalos desde el documento.</p>
+        <p>Ejecuta el código regularmente en cada cambio relevante.</p>
+      </div>
+      <aside class="notice">
+        <strong>Importante</strong>
+        <p>Las preguntas son independientes.</p>
+        <p>Para los botones utiliza la propiedad <code>onclick</code>.</p>
+        <p>Abre las herramientas de desarrollo para consultar la consola y detectar errores.</p>
+      </aside>
+    </section>
+
+    <section class="challenge panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Pregunta 01 [RA2] · 30 minutos · Consola</p>
+          <h2 id="reto-1">Análisis de un número</h2>
+        </div>
+        <span class="badge">Lógica y números</span>
+      </div>
+      <p>Se dispone de un código de cuatro cifras:</p>
+      <pre><code>const codigo = "5274"</code></pre>
+      <p>Crea un programa que analice el número y escriba
+        el resultado en la consola:</p>
+      <ol>
+        <li>Calcula la suma de las cifras, cuántas son pares y cuántas impares y cuál es la mayor.</li>
+        <li>Construye el número con las cifras en orden inverso.</li>
+        <li>Extrae las cifras con operaciones aritméticas y recórrelas con un bucle. No conviertas el número a cadena ni
+          uses arrays, objetos o funciones creadas por ti.</li>
+      </ol>
+      <p>Pistas:</p>
+      <ul>
+        <li>Al dividir un número entre 10 se obtiene la última cifra en la parte decimal y las restantes en la parte
+          entera.</li>
+        <li>El operador módulo devuelve la parte decimal.</li>
+        <li>Al multiplicar una cifra por potencias de 10 se obtienen unidades, decenas, centenas y millares.</li>
+      </ul>
+      <details>
+        <summary>Ver resultado esperado para 5274</summary>
+        <pre>Suma: 18
+Pares: 2
+Impares: 2
+Cifra mayor: 7
+Inverso: 4725</pre>
+      </details>
+    </section>
+
+    <section class="challenge panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Pregunta 02 [RA4] · 40 minutos · Consola</p>
+          <h2 id="reto-2">Comprobación de códigos</h2>
+        </div>
+        <span class="badge">Funciones y colecciones</span>
+      </div>
+      <p>Una caja de seguridad usa un código secreto de cuatro cifras distintas. Tu programa debe analizar una lista de
+        propuestas y dar pistas para cada una.</p>
+      <pre><code>const secreto = "5274";
+const propuestas = ["1231", "5721", "1234", "5274"];</code></pre>
+      <ol>
+        <li>Crea una función que reciba el secreto y la propuesta como cadenas y devuelva un objeto con el resultado.
+          No debe mostrarlo por consola desde la función.</li>
+        <li>Comprueba primero que ambos valores son cadenas de exactamente cuatro caracteres, cada cifra va del 0 al 9 y
+          <strong>sin cifras repetidas</strong>. El cero inicial está permitido. Si cualquiera no es válido, devuelve
+          una respuesta que
+          permita indicar claramente el error.
+        </li>
+        <li>Para una propuesta válida, cuenta las cifras en la posición correcta y las que están en el secreto pero en
+          otra posición. Cada cifra debe contarse una sola vez. Indica también si el código se ha
+          descubierto.</li>
+        <li>Recorre el array de intentos y muestra el resultado de cada uno. Si un intento no es válido, muestra su
+          error y continúa con el siguiente.</li>
+        <li>Al terminar, muestra cuántos intentos se han analizado en total, cuántos eran válidos y si alguno ha abierto
+          la caja. No modifiques el array ni sus cadenas originales.</li>
+      </ol>
+      <details>
+        <summary>Ver comprobaciones</summary>
+        <pre><code>1231 → error: cifra 1 repetida
+5721 → correctas: 1; otra posición: 2
+1234 → correctas: 2; otra posición: 0
+5274 → correctas: 4; otra posición: 0
+Analizados: 4; válidos: 3; caja abierta: sí</code></pre>
+      </details>
+    </section>
+
+    <section class="challenge panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Pregunta 03 [RA3] · 70 minutos · DOM</p>
+          <h2 id="reto-3">Abre la caja</h2>
+        </div>
+        <span class="badge">Manejo básico del DOM</span>
+      </div>
+      <p>Programa la caja de abajo. Cada partida genera un código secreto entero aleatorio entre <strong>000 y
+          999</strong>, ambos incluidos. El jugador dispone de <strong>10 intentos</strong>.</p>
+      <ol>
+        <li>Al cargar la página, inicia una partida: genera el código con <code>Math.random</code> y prepara los
+          contadores y mensajes.</li>
+        <li>Lee los tres selectores y forma el número. Las propuestas repetidas también consumen un intento.</li>
+        <li>Al pulsar «Probar código» muestra en una alerta si el número es mayor o menor que el código, y descuenta un
+          intento.</li>
+        <li>Si acierta, muestra la victoria en un alert y en la etiqueta <code>#estado-caja</code>; acertar en el último
+          intento también cuenta como victoria.</li>
+        <li>Si se agotan los intentos sin acertar, muestra la derrota y revela el código.</li>
+        <li>«Nueva partida» genera otro código y restablece los intentos a 10.</li>
+        <li>Tanto al ganar como al perder, deshabilita el botón de prueba.</li>
+        <li>Si se recarga la página o se cierra el navegador se debe mantener el código, el número de intentos y el
+          estado del botón «Probar código» (deshabilitado si no quedan intentos). Utiliza cookies para esto. Tendrás que
+          comprobar al inicio si existen las cookies y obtenerlas, y si no tendrás que generar un código, establecer los
+          intentos en 10 y almacenar las cookies.</li>
+      </ol>
+      <p>Durante el desarrollo puedes mostrar el secreto en consola para comprobar el juego, pero elimínalo antes de
+        entregar.</p>
+
+
+      <div class="game">
+        <div class="game-top">
+          <div>
+            <p class="eyebrow">Panel de seguridad</p>
+            <h3>Caja de seguridad</h3>
+          </div>
+          <span id="estado-caja" class="status status--closed">Cerrada</span>
+        </div>
+
+        <div id="caja" class="vault vault--closed">
+          <div class="vault-icon">✦</div>
+          <p>Introduce una combinación de tres cifras</p>
+          <div class="digits">
+            <label for="cifra-1">Centenas
+              <select id="cifra-1">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </label>
+            <label for="cifra-2">Decenas
+              <select id="cifra-2">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </label>
+            <label for="cifra-3">Unidades
+              <select id="cifra-3">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button id="probar" type="button">Probar código</button>
+            <button id="reiniciar" class="button-secondary" type="button">Nueva partida</button>
+          </div>
+        </div>
+
+        <div class="game-info">
+          <div class="stat"><span>Intentos restantes</span><strong id="intentos-restantes">10</strong></div>
+        </div>
+
+      </div>
+
+      <details>
+        <summary>Referencia de elementos y clases del panel</summary>
+        <ul>
+          <li>usa el atributo <code>onclick</code> para definir la acción de los botones.</li>
+          <li>el valor actual de los selectores se obtiene de la propiedad <code>.value</code></li>
+          <li>el estado del botón se define en la propiedad <code>.disabled</code> que puede valer <code>true</code> o
+            <code>false</code>.
+          </li>
+          <li>puedes utilizar el ejemplo de comprobación, creación y obtención de cookies del tutorial de w3c.</li>
+          <li>para cambiar el aspecto de <code>#estado-caja</code> alterna el valor del atributo <code>class</code>
+            entre <code>status status--open</code> y
+            <code>status status--closed</code>.
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="panel delivery">
+      <p class="eyebrow">Últimos 10 minutos</p>
+      <h2 id="entrega">Comprueba y entrega</h2>
+      <ul>
+        <li>Revisa que no haya errores en consola y que el código sea legible.
+        </li>
+        <li>Entrega en el aula virtual tus tres archivos JavaScript y las grabaciones de pantalla.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="container footer">El código secreto · Examen 1EVA de DWEC 2.º DAW</footer>
+</body>
+
+</html>
